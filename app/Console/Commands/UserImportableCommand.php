@@ -2,9 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\ProcessUserImport;
 use Illuminate\Console\Command;
 
-class UserImport extends Command
+class UserImportableCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -18,7 +19,7 @@ class UserImport extends Command
      *
      * @var string
      */
-    protected $description = 'Import users from https://randomuser.me/documentation';
+    protected $description = 'Import users from Datasource';
 
     /**
      * Create a new command instance.
@@ -33,10 +34,11 @@ class UserImport extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
-    public function handle(): int
+    public function handle(): void
     {
-        return 0;
+        ProcessUserImport::dispatch();
+        $this->info('Process to user import is running.');
     }
 }
