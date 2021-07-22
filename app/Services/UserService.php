@@ -5,6 +5,9 @@ namespace App\Services;
 
 
 use App\Connection\UserConnection;
+use App\Models\Access;
+use App\Models\Location;
+use App\Models\User;
 
 class UserService
 {
@@ -17,15 +20,19 @@ class UserService
 
     public function import(): void
     {
-        $dataset    = $this->connection->getUserList(1);
-        $users      = collect(data_get($dataset, 'results', []));
-        $infoDataset= data_get($dataset, 'info');
+        $list = $this->connection->getUserList(2000);
 
-        if ($users->isEmpty()) {
+        if ($list->isEmpty()) {
             return;
         }
 
-        dd($users);
+        $list->map(function(array $mapping){
+            $user = data_get($mapping, 'user', new User());
+            if ($user->save()) {
+                $user->access()->save(data_get($mapping, 'access', new Access()));
+                $user->location()->save(data_get($mapping, 'location', new Location()));
+            }
+        });
     }
 
 }

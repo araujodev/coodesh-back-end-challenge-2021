@@ -11,7 +11,7 @@ class CreateLocationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
@@ -20,7 +20,7 @@ class CreateLocationsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->integer('postcode');
+            $table->string('postcode');
             $table->string('coordinates_latitude')->nullable();
             $table->string('coordinates_longitude')->nullable();
             $table->string('timezone_offset')->nullable();
@@ -39,7 +39,7 @@ class CreateLocationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('locations');
     }

@@ -38,7 +38,7 @@ class UserImportableCommand extends Command
      */
     public function handle(): void
     {
+        $this->info(trans('messages.import_user_scheduled'));
         ProcessUserImport::dispatch();
-        $this->info('Process to user import is running.');
     }
 }

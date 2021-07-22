@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Connection;
-
+namespace App\Connection\RandomUserImplementation;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;
@@ -17,7 +16,7 @@ class RandomUserHttpClient extends Client
     private const RESPONSE_SUFFIX = '_RESPONSE';
 
     public function request(string $method, $uri = '', array $options = []): ResponseInterface
-    {
+        {
         try {
 
             Log::info(self::RANDOM_USER_LOG . self::REQUEST_SUFFIX, [

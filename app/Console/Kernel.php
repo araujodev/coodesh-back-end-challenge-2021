@@ -20,12 +20,13 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command(UserImportableCommand::class)->dailyAt('01:00')->withoutOverlapping();
+        $configDailyAt = config('importable.users.daily_at');
+         $schedule->command(UserImportableCommand::class)->dailyAt($configDailyAt)->withoutOverlapping();
     }
 
     /**

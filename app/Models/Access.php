@@ -23,6 +23,8 @@ class Access extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'uuid',
         'username',

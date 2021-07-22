@@ -30,10 +30,17 @@ use Illuminate\Notifications\Notifiable;
  * @property string $thumbnail_picture
  * @property \DateInterval $imported_t
  * @property string $status
+ * @property Access $access
+ * @property Location $location
  */
 class User extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+
+    public const MALE_GENDER = 'male';
+    public const FEMALE_GENDER = 'female';
+
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.

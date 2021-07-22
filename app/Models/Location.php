@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $city
  * @property string $state
  * @property string $country
- * @property int $postcode
+ * @property string $postcode
  * @property string $coordinates_latitude
  * @property string $coordinates_longitude
  * @property string $timezone_offset
@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Location extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 
     protected $fillable = [
         'street_name',
@@ -39,10 +41,6 @@ class Location extends Model
         'timezone_offset',
         'timezone_description',
         'user_id'
-    ];
-
-    protected $casts = [
-        'postcode' => 'int'
     ];
 
     public function user(): BelongsTo

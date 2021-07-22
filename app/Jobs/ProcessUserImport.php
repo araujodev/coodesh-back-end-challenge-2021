@@ -24,10 +24,10 @@ class ProcessUserImport implements ShouldQueue
     }
 
     /**
-     * @param UserService $importService
+     * @param UserService $userService
      */
-    public function handle(UserService $importService): void
+    public function handle(UserService $userService): void
     {
-        $importService->import();
+        $userService->import();
     }
 }

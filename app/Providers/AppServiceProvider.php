@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use App\Connection\RandomUserConnection;
-use App\Connection\RandomUserHttpClient;
+use App\Connection\RandomUserImplementation\RandomUserConnection;
+use App\Connection\RandomUserImplementation\RandomUserHttpClient;
 use App\Connection\UserConnection;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        Date::setLocale($this->app->getLocale());
+
         $this->app->bind(
             UserConnection::class,
             function () {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Connection;
+namespace App\Connection\RandomUserImplementation;
 
 
 class RandomUserRoutes
