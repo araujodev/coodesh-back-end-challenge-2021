@@ -19,7 +19,7 @@ class UserImportableCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Import users from Datasource';
+    protected $description = 'Import users from Datasource using Restful Apis';
 
     /**
      * Create a new command instance.

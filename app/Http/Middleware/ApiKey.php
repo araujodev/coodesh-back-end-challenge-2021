@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ApiKey
 {
     private const KEY_NAME = 'integrator';
+
     /**
      * Handle an incoming request.
      *
