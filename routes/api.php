@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 require base_path('routes/resources/users.php');
 
-Route::middleware('guest')->get('/i-am-alive', function (Request $request) {
-    return response()->json(['alive' => true], 200);
+Route::middleware('guest')->get('/', function () {
+    return response()->json([ 'message' => trans('messages.is_running') ], Response::HTTP_OK);
 });

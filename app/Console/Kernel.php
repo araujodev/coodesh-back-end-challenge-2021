@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $configDailyAt = config('importable.users.daily_at');
+        $configDailyAt = config('importable.users.daily_at', '01:00');
          $schedule->command(UserImportableCommand::class)->dailyAt($configDailyAt)->withoutOverlapping();
     }
 

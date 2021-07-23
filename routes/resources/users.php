@@ -1,14 +1,18 @@
 <?php
 
-use Illuminate\Http\Response;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('apikey')->group(function (){
+Route::middleware('apikey')->prefix('users')->group(function() {
 
-    Route::get('/', function (){
-        return response()->json([
-            'message' => trans('messages.is_running')
-        ], Response::HTTP_OK);
-    });
+    Route::get('/{userId}', UserController::class . '@show')
+        ->where('userId', '[0-9]+');
+
+    Route::put('/{userId}', UserController::class . '@update');
+
+    Route::delete('/{userId}', UserController::class . '@remove')
+        ->where('userId', '[0-9]+');
+
+    Route::get('/', UserController::class . '@index');
 
 });
