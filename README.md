@@ -4,6 +4,8 @@ Projeto destinado ao desafio back-end do portal Coodesh utilizndo Laravel 8.
 
 Repositório Referência: [LAB COODESH - Public Challenge 2021](https://lab.coodesh.com/public-challenges/back-end-challenge-2021).
 
+![Insomnia Challenge 2021 - Leandro Araujo](https://i.ibb.co/jGWCxBR/Captura-de-Tela-2021-07-26-a-s-16-24-27.png)
+
 ## Especificações
 
 - Laravel 8
