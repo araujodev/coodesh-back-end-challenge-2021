@@ -15,7 +15,7 @@ Repositório Referência: [LAB COODESH - Public Challenge 2021](https://lab.cood
 1. Fazer uma cópia do arquivo `.env.example` e renomear para `.env`.
 2. Gerar a chave da aplicação para garantir uma segurança adicional, para isso execute: `php artisan key:generate`.
 3. Edite as variáveis de ambiente respectivas a conexão do banco dados para executar as migrations.
-4. Como optamos por utilizar o `QUEUE_CONNECTION` como `database`, precisamos criar as devidas tabelas. Para isso rode os comandos: `php artisan queue:table` e `php artisan migrate`.
+4. Como optamos por utilizar o `QUEUE_CONNECTION` como `database`, precisamos rodar o comando `php artisan migrate` para criar as tabelas de jobs e das entidades do nosso software.
 5. Rodar o projeto com `php artisan serve --port=8000`.
 6. Para criar uma API KEY valida execute `php artisan apikey:generate`. Essa chave deve ser utilizada para realizar a autentiacação nos endpoints REST.
 7. Importar os usuários com o comando `php artisan user:import`.
