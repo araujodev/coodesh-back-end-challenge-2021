@@ -18,7 +18,7 @@ Repositório Referência: [LAB COODESH - Public Challenge 2021](https://lab.cood
 4. Como optamos por utilizar o `QUEUE_CONNECTION` como `database`, precisamos rodar o comando `php artisan migrate` para criar as tabelas de jobs e das entidades do nosso software.
 5. Rodar o projeto com `php artisan serve --port=8000`.
 6. Para criar uma API KEY valida execute `php artisan apikey:generate`. Essa chave deve ser utilizada para realizar a autentiacação nos endpoints REST.
-7. Importar os usuários com o comando `php artisan user:import`.
+7. Importar os usuários com o comando `php artisan user:import`, caso necessário: `php artisan queue:work`.
 8. Consumir os endpoints especificados em `routes/resources/users.php`.
 9. (opcional) Rodar a suite de testes de `Feature` e `Unit`.
 
