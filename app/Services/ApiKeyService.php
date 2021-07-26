@@ -35,7 +35,7 @@ class ApiKeyService
         return $client;
     }
 
-    public function getOneByValue(string $value): ?Authorization
+    public function getOneByValue(?string $value): ?Authorization
     {
         return Authorization::where('sha1_value', '=', $value)->first();
     }
