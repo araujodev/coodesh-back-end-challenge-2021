@@ -11,6 +11,7 @@ Repositório Referência: [LAB COODESH - Public Challenge 2021](https://lab.cood
 
 ## Instalação
 
+0. Clonar o projeto e rodar `composer install`.
 1. Fazer uma cópia do arquivo `.env.example` e renomear para `.env`.
 2. Gerar a chave da aplicação para garantir uma segurança adicional, para isso execute: `php artisan key:generate`.
 3. Edite as variáveis de ambiente respectivas a conexão do banco dados para executar as migrations.
