@@ -80,7 +80,7 @@ class UserService
         }
     }
 
-    public function getPaginate(array $filters): LengthAwarePaginator
+    public function getPaginate(array $filters = []): LengthAwarePaginator
     {
         return (new UserFilter())
             ->apply($filters)
