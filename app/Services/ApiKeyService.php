@@ -42,20 +42,16 @@ class ApiKeyService
 
     public function compareIsValidKey(?string $apiKeyHeaderValue): bool
     {
-        if ($apiKeyHeaderValue === null) {
-            return false;
-        }
-
         $authorization = $this->getOneByValue($apiKeyHeaderValue);
         if(
-            data_get($authorization, 'key') !== Authorization::KEY_NAME ||
-            data_get($authorization, 'sha1_value') !== $apiKeyHeaderValue ||
-            data_get($authorization, 'status' === AuthorizationStatusEnum::INACTIVE)
+            data_get($authorization, 'key') === Authorization::KEY_NAME &&
+            data_get($authorization, 'sha1_value') === $apiKeyHeaderValue &&
+            data_get($authorization, 'status') === AuthorizationStatusEnum::ACTIVE
         ) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
 }
