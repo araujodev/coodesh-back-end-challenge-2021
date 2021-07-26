@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Enumerators\AuthorizationStatusEnum;
 use App\Models\Authorization;
 use App\Services\ApiKeyService;
 use Closure;
@@ -28,16 +29,8 @@ class ApiKey
     {
         $apiKeyHeaderValue = $request->header(Authorization::KEY_NAME);
 
-        if ($apiKeyHeaderValue === null) {
+        if (false === $this->apiKeyService->compareIsValidKey($apiKeyHeaderValue)) {
             return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        $authorization = $this->apiKeyService->getOneByValue($apiKeyHeaderValue);
-        if(data_get($authorization, 'key') !== Authorization::KEY_NAME ||
-            data_get($authorization, 'sha1_value') !== $apiKeyHeaderValue) {
-
-            return response()->json(['error' => 'Unauthorized'], 401);
-
         }
 
         return $next($request);

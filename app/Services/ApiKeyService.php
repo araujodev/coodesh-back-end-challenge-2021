@@ -40,4 +40,22 @@ class ApiKeyService
         return Authorization::where('sha1_value', '=', $value)->first();
     }
 
+    public function compareIsValidKey(?string $apiKeyHeaderValue): bool
+    {
+        if ($apiKeyHeaderValue === null) {
+            return false;
+        }
+
+        $authorization = $this->getOneByValue($apiKeyHeaderValue);
+        if(
+            data_get($authorization, 'key') !== Authorization::KEY_NAME ||
+            data_get($authorization, 'sha1_value') !== $apiKeyHeaderValue ||
+            data_get($authorization, 'status' === AuthorizationStatusEnum::INACTIVE)
+        ) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
